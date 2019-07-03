@@ -1,0 +1,9 @@
+<div class="ship">
+  <img
+    [@move]="isMove ? 'p1': 'p2'"
+    (@move.start)="onStartAnimation($event)"
+    (@move.done)="onDoneAnimation($event)"
+    (click)="toggleMove()"
+    src="../assets/sovraht.gif"
+  />
+</div>

@@ -1,0 +1,11 @@
+<div>
+  <form [formGroup]="formShip" (ngSubmit)="onSubmit()">
+    <input
+      type="text"
+      name="shipName"
+      placeholder="Nome do navio"
+      formControlName="shipName"
+    />
+    <input type="submit" class="btn" value="test" />
+  </form>
+</div>

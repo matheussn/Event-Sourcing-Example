@@ -1,0 +1,20 @@
+.main {
+    height: -webkit-fill-available;
+}
+
+.port {
+    background-color: bisque;
+    height: inherit;
+    width: 10%;
+    position: absolute;
+
+    &.left {
+        left: 90%;
+    }
+}
+
+.forms {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
