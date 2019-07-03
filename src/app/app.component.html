@@ -1,6 +1,14 @@
 <div class="main">
-    <div class="port left">{{ ports[0] | json }}</div>
-    <div class="port">{{ ports[1] | json }}</div>
+    <div class="port left">
+        Nome: {{ ports[0].nome }}<br>
+        Carga: {{ ports[0].estoque }}<br>
+        Navios: {{ ports[0].navios | json}}
+    </div>
+    <div class="port">
+        Nome: {{ ports[1].nome }}<br>
+        Carga: {{ ports[1].estoque }}<br>
+        Navios: {{ ports[1].navios | json}}
+    </div>
 
     <div *ngFor="let ship of ships">
         <app-ship [navio]="ship"></app-ship>
@@ -8,5 +16,12 @@
 
     <div class="forms" *ngIf="ships.length < 4">
         <app-form-add-ship></app-form-add-ship>
+    </div>
+
+    <div class="ships">
+        <div *ngFor="let ship of ships">
+            Nome: {{ ship.nome }}<br>
+            Carga: {{ ship.carga }}<br>
+        </div>
     </div>
 </div>

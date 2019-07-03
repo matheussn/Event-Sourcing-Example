@@ -1,23 +1,14 @@
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
-  IncrementHome = '[Scoreboard Page] Home Score',
-  IncrementAway = '[Scoreboard Page] Away Score',
-  Reset = '[Scoreboard Page] Score Reset',
+  LoadShip = '[Load Ship] Colocando carga no navio',
+  UnloadShip = '[UnLoad Ship] Descarregando Carga'
 }
 
-export class IncrementHome implements Action {
-  readonly type = ActionTypes.IncrementHome;
+export class UnloadShip implements Action {
+  readonly type = ActionTypes.UnloadShip;
+
+  constructor(public payload: {navio: string, porto: string}) {}
 }
 
-export class IncrementAway implements Action {
-  readonly type = ActionTypes.IncrementAway;
-}
-
-export class Reset implements Action {
-  readonly type = ActionTypes.Reset;
-
-  constructor(public payload: { home: number; away: number }) {}
-}
-
-export type ActionsUnion = IncrementHome | IncrementAway | Reset;
+export type ActionsUnion = UnloadShip ;

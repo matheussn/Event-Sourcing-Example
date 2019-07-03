@@ -26,20 +26,37 @@ export function portReducer(
   switch (action.type) {
     case PortActionTypes.ArrivedIn:
       state.map(
-        (port: Port) =>
-          port.nome === action.payload.porto ?
-            port.navios.push(action.payload.navio) : port
+        (port: Port) => {
+          if (port.nome === action.payload.porto) {
+            port.navios.push(action.payload.navio);
+          }
+        }
       );
       return state;
+
     case PortActionTypes.LeftThePort:
-      state.map(
-        (port: Port) =>
-          port.nome === action.payload.porto ?
+      return state.map(
+        (port: Port) => {
+          if (port.nome === action.payload.porto) {
             port.navios.splice(
-              port.navios.indexOf(action.payload.navio)
-            ) : port
+              port.navios.indexOf(action.payload.navio), 1
+            );
+            port.estoque -= action.payload.carga;
+          }
+          return port;
+        }
       );
-      return state;
+
+    case PortActionTypes.LoadPort:
+      return state.map(
+        (port: Port) => {
+          if (port.nome === action.payload.porto) {
+            port.estoque += action.payload.carga;
+          }
+          return port;
+        }
+      );
+
     default: {
       return state;
     }

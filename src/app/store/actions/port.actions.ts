@@ -2,7 +2,8 @@ import { Action } from '@ngrx/store';
 
 export enum PortActionTypes {
   ArrivedIn = '[ArrivedInPorto] Chegou em Porto',
-  LeftThePort = '[LeftThePort] Patiu do porto'
+  LeftThePort = '[LeftThePort] Patiu do porto',
+  LoadPort = '[LoadPort] Carregando porto'
 }
 
 export class ArrivedInPorto implements Action {
@@ -14,7 +15,13 @@ export class ArrivedInPorto implements Action {
 export class LeftThePort implements Action {
   readonly type = PortActionTypes.LeftThePort;
 
-  constructor(public payload: {porto: string, navio: string}) {}
+  constructor(public payload: {porto: string, navio: string, carga: number}) {}
 }
 
-export type PortActions = ArrivedInPorto | LeftThePort;
+export class LoadPort implements Action {
+  readonly type = PortActionTypes.LoadPort;
+
+  constructor(public payload: {porto: string, carga: number}) {}
+}
+
+export type PortActions = ArrivedInPorto | LeftThePort | LoadPort;
